@@ -14,5 +14,5 @@ class Spell:
     def add_class(self, class):
         self.class.append(class)
 
-
-        
+    def get_class(self):
+        """Return csv formated reply for imports"""
