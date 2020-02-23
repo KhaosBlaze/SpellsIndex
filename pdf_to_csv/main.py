@@ -1,3 +1,5 @@
+import getPDF
+
 def main():
     print("Yeet")
 
