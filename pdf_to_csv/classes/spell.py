@@ -9,10 +9,11 @@ class Spell:
         self.components = None
         self.Duration = None
         self.Description = None
-        self.class = []
+        self.classes = []
 
-    def add_class(self, class):
-        self.class.append(class)
+    def add_class(self, newClass):
+        self.classes.append(newClass)
 
     def get_class(self):
         """Return csv formated reply for imports"""
+        pass
