@@ -11,6 +11,14 @@ class Spell:
         self.Description = None
         self.classes = []
 
+    def __str__(self):
+        printer =  "Name: " + self.name + "\n"
+        printer+=  "Level: " + self.level + "\n"
+        printer+=  "School: " + self.school + "\n"
+        printer+=  "Casing Time: " + self.casting_time + "\n"
+        printer+=  "Range: " + self.range + "\n"
+        return printer
+
     def add_class(self, newClass):
         self.classes.append(newClass)
 
