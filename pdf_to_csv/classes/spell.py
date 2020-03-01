@@ -7,7 +7,7 @@ class Spell:
         self.casting_time =  None
         self.range = None
         self.components = None
-        self.Duration = None
+        self.duration = None
         self.Description = None
         self.classes = []
 
@@ -17,6 +17,9 @@ class Spell:
         printer+=  "School: " + self.school + "\n"
         printer+=  "Casing Time: " + self.casting_time + "\n"
         printer+=  "Range: " + self.range + "\n"
+        printer+=  "Compoents: " + self.components + "\n"
+        printer+=  "Duration: " + self.duration + "\n"
+        printer+=  "Description: " + self.Description + "\n"
         return printer
 
     def add_class(self, newClass):

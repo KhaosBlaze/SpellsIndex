@@ -24,7 +24,6 @@ def indexSpellOptions(array):
     index[3] = array.index('Components:')
     print(index[3])
     index[4] = array.index('Duration:')
-
     return index
 
 def textBetween(array, match):
@@ -41,10 +40,13 @@ def stripPage(array):
     """
     Remove Page numbers from spell entries
     """
-    pageLocation = array.index('Page ')
-    array.pop(pageLocation)
-    array.pop(pageLocation)
-    return array
+    try:
+        pageLocation = array.index('Page ')
+        array.pop(pageLocation)
+        array.pop(pageLocation)
+        return array
+    except ValueError:
+        return array
 
 
 def spellFormat(array):
@@ -54,10 +56,10 @@ def spellFormat(array):
     a csv formatted text.
     """
     spellTemplate = Spell()
-    #Get Index of key indicators from array of text for the spell
-    index = indexSpellOptions(array)
     #Strip page numbers
     array = stripPage(array)
+    #Get Index of key indicators from array of text for the spell
+    index = indexSpellOptions(array)
     #Get name of spell from the start of the array to before the numeric level
     spellTemplate.name = ''.join(array[:index[0]-2]).strip()
     #Get the spell level (2 before the word level)
@@ -68,12 +70,14 @@ def spellFormat(array):
     spellTemplate.range = textBetween(array[index[2]:index[3]-1], 'Range:')
     spellTemplate.components = textBetween(array[index[3]:index[4]-1],
                                                 'Components:')
+    spellTemplate.duration = array[index[4]+2]
+    spellTemplate.Description = ''.join(array[index[4]+3:]).strip()
     #spellTemplate.duration = textBetween(array[index[4]:index[5]-1], 'Duration:')
     return spellTemplate
 
 #Testing Variables
 endingPage = 26
-spellNumber = 1
+spellNumber = 3
 
 #Collect the PDFobject and set the file reader object
 spellPDF = PyPDF2.PdfFileReader(open('../Spells.pdf', 'rb'))
