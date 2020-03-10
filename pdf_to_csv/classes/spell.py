@@ -25,6 +25,7 @@ class Spell:
     def add_class(self, newClass):
         self.classes.append(newClass)
 
-    def get_class(self):
-        """Return csv formated reply for imports"""
-        pass
+    def get_query(self):
+        """Return query formated reply for imports"""
+        return """INSERT INTO Spells (Name, Level, School, Casting_Time,
+                    Range, Components, Duration, Description)"""
